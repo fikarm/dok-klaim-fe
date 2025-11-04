@@ -1,0 +1,59 @@
+import streamlit as st
+from frontend.pages.single_rule_page.client import Client
+from frontend.pages.single_rule_page import schema
+from frontend.pages.single_rule_page import session
+from frontend.pages.single_rule_page import render
+from langchain_core.messages import HumanMessage, AIMessage
+
+
+def single_rule_page():
+    session.init_thread_id()
+
+    session.init_history()
+
+    session.init_client()
+
+    session.init_pdf_uploaded()
+
+    petunjuk = (
+        "#### Uji Coba 1 Rule\n"
+        "- Masukkan 1 file pdf dokumen klaim\n"
+        "- Tanyakan satu rule ke dalam chat\n"
+        "- Percakapan ini tidak disimpan dan akan hilang ketika muat ulang\n"
+        "---"
+    )
+    st.markdown(petunjuk)
+
+    # simpan file upload di session
+    uploaded_file = st.file_uploader("Masukkan dokumen klaim", type="pdf")
+
+    if uploaded_file is not None:
+        st.session_state.pdf = uploaded_file
+
+    render.render_history()
+
+    # read user prompt
+    prompt = st.chat_input(
+        "Masukkan satu rule validasi klaim asuransi BPJS ...",
+    )
+
+    if prompt:
+        history: schema.ChatHistory = st.session_state.history
+
+        # render bulb
+        human_message = HumanMessage(prompt)
+        # render.render_human_message(HumanMessage(st.session_state.user_id))
+        render.render_human_message(HumanMessage(prompt))
+        history.messages.append(human_message)
+
+        # client call
+        client: Client = st.session_state.client
+        response = client.invoke("agent_rule_evaluator", prompt, st.session_state.pdf)
+        print(response.text)
+        print("----")
+        print(response.json())
+
+        # render response
+        ai_message = AIMessage(response.json())
+        render.render_ai_message(ai_message)
+        history.messages.append(ai_message)
