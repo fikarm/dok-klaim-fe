@@ -1,6 +1,6 @@
 import streamlit as st
-from frontend.render import render_human_message, render_ai_message
-from frontend.pages.single_rule_page.schema import ChatHistory
+from src.core.render import render_human_message, render_ai_message
+from src.pages.single_rule_page.schema import ChatHistory
 from langchain_core.messages import HumanMessage, AIMessage, AIMessageChunk
 
 

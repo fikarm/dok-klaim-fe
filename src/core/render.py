@@ -1,5 +1,5 @@
 import streamlit as st
-from schema.schema import ChatHistory
+from src.schema.schema import ChatHistory
 from langchain_core.messages import HumanMessage, AIMessage, AIMessageChunk
 from streamlit.elements.widgets.chat import ChatInputValue
 

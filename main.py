@@ -1,6 +1,8 @@
 import streamlit as st
-from src import config, session
-from src.pages import all_rules_page, single_rule_page
+from src.core import session
+from src.pages import all_rules_page
+from src.pages import single_rule_page
+from src.config import config
 
 
 def main():

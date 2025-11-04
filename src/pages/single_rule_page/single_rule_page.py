@@ -1,8 +1,8 @@
 import streamlit as st
-from frontend.pages.single_rule_page.client import Client
-from frontend.pages.single_rule_page import schema
-from frontend.pages.single_rule_page import session
-from frontend.pages.single_rule_page import render
+from src.pages.single_rule_page.client import Client
+from src.pages.single_rule_page import schema
+from src.pages.single_rule_page import session
+from src.pages.single_rule_page import render
 from langchain_core.messages import HumanMessage, AIMessage
 
 

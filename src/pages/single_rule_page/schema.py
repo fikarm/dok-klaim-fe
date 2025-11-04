@@ -1,7 +1,10 @@
 from typing import List, Dict
-from fastapi import UploadFile
+
+# from fastapi import UploadFile
 from pydantic import BaseModel, Field
 from langchain_core.messages import AnyMessage
+
+# from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 
 class ChatHistory(BaseModel):
@@ -9,7 +12,7 @@ class ChatHistory(BaseModel):
 
 
 class UserInput(BaseModel):
-    pdfs: List[UploadFile] | None
+    pdfs: List | None = Field(default=None)
     message: str = Field(
         description="User input to the agent.",
         examples=["What is the weather in Tokyo?"],

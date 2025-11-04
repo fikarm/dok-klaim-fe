@@ -3,7 +3,7 @@ import gc
 import uuid
 import streamlit as st
 from langchain_core.messages.utils import AnyMessage
-from frontend import config
+from src.config import config
 from dotenv import load_dotenv
 from langchain_ollama import ChatOllama
 

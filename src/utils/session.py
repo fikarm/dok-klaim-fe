@@ -4,7 +4,7 @@ import uuid
 import streamlit as st
 from langchain_core.messages.utils import AnyMessage
 from frontend import config
-from frontend.client import Client
+from src.client import Client
 from schema import Threads
 from dotenv import load_dotenv
 from langchain_ollama import ChatOllama

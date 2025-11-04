@@ -1,5 +1,5 @@
 import httpx
-from schema import UserInput
+from src.schema import UserInput
 
 
 class AgentClient:

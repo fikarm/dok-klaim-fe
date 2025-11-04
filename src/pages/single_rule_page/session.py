@@ -1,7 +1,7 @@
 import uuid
 import streamlit as st
-from frontend.pages.single_rule_page.schema import ChatHistory
-from frontend.pages.single_rule_page.client import Client
+from src.pages.single_rule_page.schema import ChatHistory
+from src.pages.single_rule_page.client import Client
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 
